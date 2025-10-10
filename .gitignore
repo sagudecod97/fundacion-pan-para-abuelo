@@ -1,0 +1,33 @@
+# ========================================================
+# Node & Package Files
+# ========================================================
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# ========================================================
+# Build Outputs
+# ========================================================
+build/
+public/assets/
+.temp/
+.tmp/
+.cache/
+.sass-cache/
+.parcel-cache/
+out/
+
+# ========================================================
+# Sass & CSS
+# ========================================================
+# Ignore compiled CSS if generated from Sass
+*.css.map
+*.css.min.css
+*.min.css
+# You can also ignore compiled CSS entirely if your pipeline handles it:
+# /dist/assets/css/
+# Uncomment this if you compile styles separately:
+# /src/styles/**/*.css
+
+# ========================================================
+# Logs & Runtim

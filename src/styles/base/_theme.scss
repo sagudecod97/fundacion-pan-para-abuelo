@@ -1,0 +1,64 @@
+@use "sass:map";
+
+// Color maps
+$theme-light: (
+  bg: #fff8e5,
+  surface: #ffffff,
+  text: #1e1e1e,
+  text-secondary: #555555,
+  border: #e0e0e0,
+  icon: #6b6b6b,
+  accent: #ffd54f,
+  accent-hover: #ffc107,
+  button-text: #000000,
+);
+
+$theme-dark: (
+  bg: #1a1a1a,
+  surface: #121212,
+  text: #f5f5f5,
+  text-secondary: #b0b0b0,
+  border: #2c2c2c,
+  icon: #aaaaaa,
+  accent: #ffca28,
+  accent-hover: #ffd740,
+  button-text: #000000,
+);
+
+// Helpers
+@function color-token($key, $theme: $theme-light) {
+  @return map.get($theme, $key);
+}
+
+@mixin emit-css-vars($theme) {
+  --color-bg: #{color-token(bg, $theme)};
+  --color-surface: #{color-token(surface, $theme)};
+  --color-text: #{color-token(text, $theme)};
+  --color-text-secondary: #{color-token(text-secondary, $theme)};
+  --color-border: #{color-token(border, $theme)};
+  --color-icon: #{color-token(icon, $theme)};
+
+  --color-accent: #{color-token(accent, $theme)};
+  --color-accent-hover: #{color-token(accent-hover, $theme)};
+  --color-button-text: #{color-token(button-text, $theme)};
+}
+
+// Themes
+:root {
+  @include emit-css-vars($theme-light);
+}
+
+// Prefer system dark
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include emit-css-vars($theme-dark);
+  }
+}
+
+// Manual override via attribute
+[data-theme="light"] {
+  @include emit-css-vars($theme-light);
+}
+[data-theme="dark"] {
+  @include emit-css-vars($theme-dark);
+}
