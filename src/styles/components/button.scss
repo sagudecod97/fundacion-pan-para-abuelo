@@ -1,0 +1,79 @@
+@use "../base/variables" as vars;
+
+.btn {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.6rem;
+  font-weight: 500;
+  box-shadow: rgba(31, 41, 55, 0.06) 0px 1px 1px 0px;
+  border: 0.1rem solid transparent;
+
+  &:hover {
+    border: 0.1rem solid var(--color-bright-gray);
+  }
+}
+
+.btn {
+  &-primary {
+    color: vars.$color-light;
+    background: vars.$color-primary;
+  }
+
+  &-secondary {
+    color: vars.$color-light;
+    background: vars.$color-secondary;
+  }
+
+  &-success {
+    color: vars.$color-light;
+    background: vars.$color-success;
+  }
+
+  &-warning {
+    color: vars.$color-light;
+    background: vars.$color-warning;
+  }
+
+  &-danger {
+    color: vars.$color-light;
+    background: vars.$color-danger;
+  }
+
+  &-info {
+    color: vars.$color-light;
+    background: vars.$color-info;
+  }
+
+  &-dark {
+    color: vars.$color-light;
+    background: vars.$color-dark;
+  }
+
+  &-light {
+    color: vars.$color-dark;
+    background: vars.$color-light;
+  }
+
+  &-primary,
+  &-secondary,
+  &-success,
+  &-warning,
+  &-danger,
+  &-info,
+  &-dark,
+  &-light {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.--square {
+  border-radius: 0;
+}
+
+.--pill {
+  border-radius: 100rem;
+}

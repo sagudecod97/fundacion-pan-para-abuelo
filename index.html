@@ -11,20 +11,65 @@
     />
 
     <script src="./src/scripts/pages/index.js" type="module"></script>
-    <title>Fundación Pan para un Abuelo</title>
+    <title>Fundación Pan para un Abuelo: Base Components</title>
     <style>
-      .icon > use {
-        color: red;
-        stroke: aqua;
-        fill: gold;
+      h1,
+      h2 {
+        text-align: left;
+        padding: 2rem 2rem;
       }
     </style>
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <svg><use href="#a-b-2"></use></svg>
-    <svg class="icon">
-      <use href="/src/assets/icons/icons-sprite.svg#heart"></use>
-    </svg>
+    <h1>Demo Page</h1>
+
+    <h2>Buttons Default</h2>
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <button class="btn">No Class</button>
+      <button class="btn">Class</button>
+    </div>
+
+    <h2>Colors Variants</h2>
+
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-secondary">Secondary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-warning">Warning</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-info">Info</button>
+      <button class="btn btn-dark">Dark</button>
+      <button class="btn btn-light">Light</button>
+    </div>
+
+    <h2>Buttons Square and Pill</h2>
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <button class="btn btn-light --square">No Class</button>
+      <button class="btn btn-dark --pill">Class</button>
+    </div>
   </body>
 </html>

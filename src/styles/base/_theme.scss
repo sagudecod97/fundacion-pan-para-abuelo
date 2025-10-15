@@ -11,6 +11,7 @@ $theme-light: (
   accent: #ffd54f,
   accent-hover: #ffc107,
   button-text: #000000,
+  bright-gray: #e5e7eb,
 );
 
 $theme-dark: (
@@ -23,6 +24,7 @@ $theme-dark: (
   accent: #ffca28,
   accent-hover: #ffd740,
   button-text: #000000,
+  bright-gray: #1a1b24,
 );
 
 // Helpers
@@ -41,6 +43,7 @@ $theme-dark: (
   --color-accent: #{color-token(accent, $theme)};
   --color-accent-hover: #{color-token(accent-hover, $theme)};
   --color-button-text: #{color-token(button-text, $theme)};
+  --color-bright-gray: #{color-token(bright-gray, $theme)};
 }
 
 // Themes
