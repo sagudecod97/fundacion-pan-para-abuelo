@@ -12,9 +12,9 @@
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.93.2",
-    "vite": "^7.1.9"
-  },
-  "dependencies": {
+    "svgstore-cli": "^2.0.1",
+    "vite": "^7.1.9",
+    "vite-plugin-html-inject": "^1.1.2",
     "@tabler/icons": "^3.35.0"
   }
 }
