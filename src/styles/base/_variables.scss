@@ -34,3 +34,16 @@ $margin-5: 2rem;
 $margin-6: 3rem;
 $margin-7: 5rem;
 $margin-8: 8rem;
+
+// Z-Index
+$z-below: -1;
+$z-base: 0;
+$z-content: 100;
+$z-header: 200;
+$z-sticky: 300;
+$z-overlay: 400;
+$z-dropdown: 500;
+$z-modal: 600;
+$z-toast: 700;
+$z-tooltip: 800;
+$z-top: 999;

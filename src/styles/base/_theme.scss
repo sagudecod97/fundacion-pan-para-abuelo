@@ -3,7 +3,8 @@
 // Color maps
 $theme-light: (
   // Miscelaneous colors
-  bg: #fff8e5,
+  bg: #ffffff,
+  bg-yellow: #fff8e5,
   surface: #ffffff,
   text: #1e1e1e,
   text-secondary: #555555,
@@ -19,7 +20,7 @@ $theme-light: (
   warning: #ed8936,
   danger: #e53e3e,
   info: #4299e1,
-  dark-light: #2d3748,
+  dark-light: #101112,
   dark: #2d3748,
   light: #f7fafc,
   accent: #ffd54f,
@@ -31,14 +32,15 @@ $theme-light: (
 $theme-dark: (
   // Miscelaneous colors
   bg: #1a1a1a,
+  bg-yellow: #101010,
   surface: #030303,
-  text: #f5f5f5,
+  text: #cfcfcf,
   text-secondary: #b0b0b0,
   border: #2c2c2c,
   icon: #aaaaaa,
   button-text: #000000,
   bright-gray: #1a1b24,
-  box-shadow: rgb(229, 231, 235),
+  box-shadow: rgba(229, 231, 235, 0.208),
   // Primary colors
   primary: #4299e1,
   secondary: #9ca3af,
@@ -47,7 +49,7 @@ $theme-dark: (
   danger: #f56565,
   info: #3182ce,
   dark: #171923,
-  dark-light: #f7fafc,
+  dark-light: #cfcfcf,
   light: #e2e8f0,
   accent: #ffca28,
   accent-hover: #ffd740,
@@ -63,6 +65,7 @@ $theme-dark: (
 @mixin emit-css-vars($theme) {
   // Miscelaneous colors
   --color-bg: #{color-token(bg, $theme)};
+  --color-bg-yellow: #{color-token(bg-yellow, $theme)};
   --color-surface: #{color-token(surface, $theme)};
   --color-text: #{color-token(text, $theme)};
   --color-text-secondary: #{color-token(text-secondary, $theme)};
