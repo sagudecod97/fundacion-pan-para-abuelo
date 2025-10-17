@@ -16,8 +16,8 @@
     <title>Fundación Pan para un Abuelo: Base Components</title>
     <style>
       body {
-        height: 110vh;
         background-color: var(--color-bg);
+        padding-bottom: 80px;
       }
       h1 {
         font-size: 4.5rem;
@@ -25,6 +25,7 @@
 
       h2 {
         font-size: 2.4rem;
+        text-decoration: underline;
       }
 
       h3 {
@@ -32,8 +33,7 @@
       }
 
       h1,
-      h2,
-      h3 {
+      .title {
         text-align: left;
         padding: 2rem 2rem;
       }
@@ -42,8 +42,8 @@
   <body>
     <h1>Demo Page</h1>
 
-    <h2>Buttons Variants</h2>
-    <h3>Buttons Default</h3>
+    <h2 class="title">Buttons Variants</h2>
+    <h3 class="title">Buttons Default</h3>
     <div
       style="
         padding: 0 3rem;
@@ -57,7 +57,7 @@
       <button class="btn">Button 2</button>
     </div>
 
-    <h3>Colors Variants</h3>
+    <h3 class="title">Colors Variants</h3>
 
     <div
       style="
@@ -78,7 +78,7 @@
       <button class="btn btn-light">Light</button>
     </div>
 
-    <h3>Buttons Square and Pill</h3>
+    <h3 class="title">Buttons Square and Pill</h3>
     <div
       style="
         padding: 0 3rem;
@@ -92,7 +92,7 @@
       <button class="btn btn-dark --pill">Pill</button>
     </div>
 
-    <h3>Size Variants</h3>
+    <h3 class="title">Size Variants</h3>
     <div
       style="
         padding: 0 3rem;
@@ -106,7 +106,7 @@
       <button class="btn btn-dark btn-lg">Large</button>
     </div>
 
-    <h3>Ghost Variants</h3>
+    <h3 class="title">Ghost Variants</h3>
 
     <div
       style="
@@ -124,6 +124,90 @@
       <button class="btn btn-ghost__danger">Danger</button>
       <button class="btn btn-ghost__info">Info</button>
       <button class="btn btn-ghost__light">Light</button>
+    </div>
+
+    <h2 class="title">Card Variants</h2>
+    <h3 class="title">Card Default</h3>
+
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <div class="card">
+        <div class="card-body">
+          <p class="poppins-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title">Card with Title</h3>
+
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <div class="card">
+        <h3 class="card-title single-line poppins-medium">
+          Change tag for appropiate level
+        </h3>
+        <div class="card-body">
+          <p class="poppins-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title single-line poppins-medium">
+            Change tag for appropiate level
+          </h3>
+        </div>
+        <div class="card-body">
+          <p class="poppins-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title">Card with Title and Image</h3>
+
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <div class="card">
+        <h3 class="card-title single-line poppins-medium">
+          Change tag for appropiate level
+        </h3>
+        <div class="card-body">
+          <p class="poppins-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>

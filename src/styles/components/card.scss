@@ -1,0 +1,24 @@
+@use "../base/variables" as vars;
+
+.card {
+  background: var(--color-surface);
+  border-radius: vars.$radius-softer;
+  font-size: 1.6rem;
+  text-align: left;
+  border: 1px solid var(--color-primary-border);
+  box-shadow: 0 0 4px var(--color-box-shadow);
+  width: 100%;
+
+  &-header {
+    border-bottom: 1px solid var(--color-primary-border);
+    padding-bottom: vars.$padding-3;
+  }
+
+  &-body {
+    padding: vars.$padding-4;
+  }
+
+  &-title {
+    margin: vars.$padding-4 vars.$padding-4 0 vars.$padding-4;
+  }
+}

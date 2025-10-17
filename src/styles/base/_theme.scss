@@ -2,6 +2,7 @@
 
 // Color maps
 $theme-light: (
+  // Miscelaneous colors
   bg: #fff8e5,
   surface: #ffffff,
   text: #1e1e1e,
@@ -10,6 +11,7 @@ $theme-light: (
   icon: #6b6b6b,
   button-text: #000000,
   bright-gray: #e5e7eb,
+  box-shadow: rgb(229, 231, 235),
   // Primary colors
   primary: #3182ce,
   secondary: #718096,
@@ -22,9 +24,12 @@ $theme-light: (
   light: #f7fafc,
   accent: #ffd54f,
   accent-hover: #ffc107,
+  // Border colors
+  primary-border: rgba(229, 231, 235, 0.675)
 );
 
 $theme-dark: (
+  // Miscelaneous colors
   bg: #1a1a1a,
   surface: #030303,
   text: #f5f5f5,
@@ -33,6 +38,7 @@ $theme-dark: (
   icon: #aaaaaa,
   button-text: #000000,
   bright-gray: #1a1b24,
+  box-shadow: rgb(229, 231, 235),
   // Primary colors
   primary: #4299e1,
   secondary: #9ca3af,
@@ -45,6 +51,8 @@ $theme-dark: (
   light: #e2e8f0,
   accent: #ffca28,
   accent-hover: #ffd740,
+  // Border colors
+  primary-border: rgba(229, 231, 235, 0.675)
 );
 
 // Helpers
@@ -53,17 +61,18 @@ $theme-dark: (
 }
 
 @mixin emit-css-vars($theme) {
+  // Miscelaneous colors
   --color-bg: #{color-token(bg, $theme)};
   --color-surface: #{color-token(surface, $theme)};
   --color-text: #{color-token(text, $theme)};
   --color-text-secondary: #{color-token(text-secondary, $theme)};
   --color-border: #{color-token(border, $theme)};
   --color-icon: #{color-token(icon, $theme)};
-
   --color-accent: #{color-token(accent, $theme)};
   --color-accent-hover: #{color-token(accent-hover, $theme)};
   --color-button-text: #{color-token(button-text, $theme)};
   --color-bright-gray: #{color-token(bright-gray, $theme)};
+  --color-box-shadow: #{color-token(box-shadow, $theme)};
 
   // Primary colors
   --color-primary: #{color-token(primary, $theme)};
@@ -75,6 +84,9 @@ $theme-dark: (
   --color-dark: #{color-token(dark, $theme)};
   --color-dark-light: #{color-token(dark-light, $theme)};
   --color-light: #{color-token(light, $theme)};
+
+  // Border colors
+  --color-primary-border: #{color-token(primary-border, $theme)};
 }
 
 // Themes
