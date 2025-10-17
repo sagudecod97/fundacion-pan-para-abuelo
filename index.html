@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,25 @@
     <script src="./src/scripts/pages/index.js" type="module"></script>
     <title>Fundación Pan para un Abuelo: Base Components</title>
     <style>
-      h1,
+      body {
+        height: 110vh;
+        background-color: var(--color-bg);
+      }
+      h1 {
+        font-size: 4.5rem;
+      }
+
       h2 {
+        font-size: 2.4rem;
+      }
+
+      h3 {
+        font-size: 1.6rem;
+      }
+
+      h1,
+      h2,
+      h3 {
         text-align: left;
         padding: 2rem 2rem;
       }
@@ -23,7 +40,8 @@
   <body>
     <h1>Demo Page</h1>
 
-    <h2>Buttons Default</h2>
+    <h2>Buttons Variants</h2>
+    <h3>Buttons Default</h3>
     <div
       style="
         padding: 0 3rem;
@@ -33,11 +51,11 @@
         flex-wrap: wrap;
       "
     >
-      <button class="btn">No Class</button>
-      <button class="btn">Class</button>
+      <button class="btn">Button 1</button>
+      <button class="btn">Button 2</button>
     </div>
 
-    <h2>Colors Variants</h2>
+    <h3>Colors Variants</h3>
 
     <div
       style="
@@ -58,7 +76,7 @@
       <button class="btn btn-light">Light</button>
     </div>
 
-    <h2>Buttons Square and Pill</h2>
+    <h3>Buttons Square and Pill</h3>
     <div
       style="
         padding: 0 3rem;
@@ -68,8 +86,42 @@
         flex-wrap: wrap;
       "
     >
-      <button class="btn btn-light --square">No Class</button>
-      <button class="btn btn-dark --pill">Class</button>
+      <button class="btn btn-light --square">Square</button>
+      <button class="btn btn-dark --pill">Pill</button>
+    </div>
+
+    <h3>Size Variants</h3>
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <button class="btn btn-light btn-sm">Small</button>
+      <button class="btn btn-dark btn-lg">Large</button>
+    </div>
+
+    <h3>Ghost Variants</h3>
+
+    <div
+      style="
+        padding: 0 3rem;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+      <button class="btn btn-ghost__primary">Primary</button>
+      <button class="btn btn-ghost__secondary">Secondary</button>
+      <button class="btn btn-ghost__success">Success</button>
+      <button class="btn btn-ghost__warning">Warning</button>
+      <button class="btn btn-ghost__danger">Danger</button>
+      <button class="btn btn-ghost__info">Info</button>
+      <button class="btn btn-ghost__light">Light</button>
     </div>
   </body>
 </html>

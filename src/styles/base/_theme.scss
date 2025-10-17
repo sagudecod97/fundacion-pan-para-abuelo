@@ -8,23 +8,43 @@ $theme-light: (
   text-secondary: #555555,
   border: #e0e0e0,
   icon: #6b6b6b,
-  accent: #ffd54f,
-  accent-hover: #ffc107,
   button-text: #000000,
   bright-gray: #e5e7eb,
+  // Primary colors
+  primary: #3182ce,
+  secondary: #718096,
+  success: #48bb78,
+  warning: #ed8936,
+  danger: #e53e3e,
+  info: #4299e1,
+  dark-light: #2d3748,
+  dark: #2d3748,
+  light: #f7fafc,
+  accent: #ffd54f,
+  accent-hover: #ffc107,
 );
 
 $theme-dark: (
   bg: #1a1a1a,
-  surface: #121212,
+  surface: #030303,
   text: #f5f5f5,
   text-secondary: #b0b0b0,
   border: #2c2c2c,
   icon: #aaaaaa,
-  accent: #ffca28,
-  accent-hover: #ffd740,
   button-text: #000000,
   bright-gray: #1a1b24,
+  // Button colors
+  primary: #4299e1,
+  secondary: #9ca3af,
+  success: #38a169,
+  warning: #dd6b20,
+  danger: #f56565,
+  info: #3182ce,
+  dark: #171923,
+  dark-light: #f7fafc,
+  light: #e2e8f0,
+  accent: #ffca28,
+  accent-hover: #ffd740,
 );
 
 // Helpers
@@ -44,6 +64,17 @@ $theme-dark: (
   --color-accent-hover: #{color-token(accent-hover, $theme)};
   --color-button-text: #{color-token(button-text, $theme)};
   --color-bright-gray: #{color-token(bright-gray, $theme)};
+
+  // Primary colors
+  --color-primary: #{color-token(primary, $theme)};
+  --color-secondary: #{color-token(secondary, $theme)};
+  --color-success: #{color-token(success, $theme)};
+  --color-warning: #{color-token(warning, $theme)};
+  --color-danger: #{color-token(danger, $theme)};
+  --color-info: #{color-token(info, $theme)};
+  --color-dark: #{color-token(dark, $theme)};
+  --color-dark-light: #{color-token(dark-light, $theme)};
+  --color-light: #{color-token(light, $theme)};
 }
 
 // Themes
