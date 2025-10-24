@@ -24,12 +24,24 @@ export const carouselRotationHandler = () => {
     const carouselElement = document.querySelector("#carousel-example-id");
     const rotationInterval = setInterval(() => {
       const containerCurrentImage = query(
-        ".carousel__content",
+        ".carousel__content-img",
         carouselElement
       );
-      // const tabsElement = query(".carousel__tabs", carouselElement); Check if this is really needed
+      const allTabs = [...queryAll(".carousel__tabs-tab", carouselElement)];
       const activeTab = query(".--active", carouselElement);
-      console.log("Active: ", activeTab);
+      const indexActiveTab = allTabs.indexOf(activeTab);
+      let nextActiveTab;
+
+      if (indexActiveTab === allTabs.length - 1) {
+        nextActiveTab = allTabs[0];
+      } else {
+        nextActiveTab = allTabs[indexActiveTab + 1];
+      }
+
+      activeTab.classList.remove("--active");
+      nextActiveTab.classList.add("--active");
+      containerCurrentImage.style.backgroundImage = nextActiveTab;
+      // Define image source for current image container
     }, 3000);
 
     window[carouselId] = rotationInterval;
