@@ -1,5 +1,6 @@
 @use "./variables" as vars;
 
+// Media queries
 @mixin tablet {
   @media (min-width: #{vars.$breakpoint-tablet}) {
     @content;
@@ -15,5 +16,56 @@
 @mixin desktop {
   @media (min-width: #{vars.$breakpoint-desktop}) {
     @content;
+  }
+}
+
+// Show/Hide media queries
+// Mobile queries
+@mixin hide-mobile($display-value: block) {
+  display: none;
+
+  @media screen and (min-width: vars.$breakpoint-tablet) {
+    display: $display-value;
+  }
+}
+
+@mixin mobile-only($display-value: block) {
+  display: none;
+
+  @media screen and (max-width: vars.$breakpoint-tablet) {
+    display: $display-value;
+  }
+}
+
+// Tablet queries
+@mixin hide-tablet {
+  @media screen and (min-width: vars.$breakpoint-tablet) and (max-width: vars.$breakpoint-laptop) {
+    display: none;
+  }
+}
+
+@mixin tablet-only($display-value) {
+  @media screen and (min-width: vars.$breakpoint-tablet) and (max-width: vars.$breakpoint-laptop) {
+    display: $display-value;
+  }
+}
+
+// Tablet queries
+@mixin hide-laptop {
+  @media screen and (min-width: vars.$breakpoint-laptop) and (max-width: vars.$breakpoint-desktop) {
+    display: none;
+  }
+}
+
+@mixin laptop-only($display-value) {
+  @media screen and (min-width: vars.$breakpoint-laptop) and (max-width: vars.$breakpoint-desktop) {
+    display: $display-value;
+  }
+}
+
+// Desktop query
+@mixin hide-desktop {
+  @media screen and (min-width: vars.$breakpoint-desktop) {
+    display: none;
   }
 }

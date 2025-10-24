@@ -32,7 +32,7 @@
       }
 
       h3 {
-        font-size: 1.6rem;
+        font-size: 1.9rem;
       }
 
       h1,
@@ -51,12 +51,12 @@
   <body>
     <h1>Demo Page</h1>
 
-    <h2 class="title">Buttons Variants</h2>
+    <!-- <h2 class="title">Buttons Variants</h2>
     <h3 class="title">Buttons Default</h3>
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -72,11 +72,12 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
+        background-color: var(--color-bg-yellow);
       "
     >
       <button class="btn btn-primary">Primary</button>
@@ -94,7 +95,7 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -109,11 +110,12 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
+        background-color: var(--color-bg-yellow);
       "
     >
       <button class="btn btn-light btn-sm">Small</button>
@@ -125,7 +127,7 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -147,11 +149,12 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
+        background-color: var(--color-bg-yellow);
       "
     >
       <div class="card">
@@ -169,7 +172,7 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -208,11 +211,12 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
+        background-color: var(--color-bg-yellow);
       "
     >
       <div class="card">
@@ -241,7 +245,7 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -274,11 +278,12 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
+        background-color: var(--color-bg-yellow);
       "
     >
       <div class="card --stacked">
@@ -311,12 +316,11 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
         flex-wrap: wrap;
-        background-color: var(--color-bg-yellow);
       "
     >
       <div class="card --status">
@@ -351,7 +355,7 @@
     <div
       class="section"
       style="
-        padding: 0 3rem;
+        padding: 8rem 3rem;
         display: flex;
         gap: 20px;
         align-items: flex-start;
@@ -383,6 +387,82 @@
           </p>
         </div>
       </div>
+    </div>
+        -->
+
+    <h2 class="title">Carousel</h2>
+    <h3 class="title">Carousel default</h3>
+
+    <div class="section" style="padding: 8rem 3rem; display: flex; gap: 20px">
+      <!-- Section has implied role of region -->
+      <section
+        aria-roledescription="Galería de imagenes"
+        aria-label="Imagenes de nuestros abuelos"
+        class="carousel"
+      >
+        <!-- Rotation controls -->
+        <button class="carousel__rotation">
+          <svg class="carousel__rotation-icon">
+            <use href="/src/assets/icons/icons-sprite.svg#player-play"></use>
+          </svg>
+        </button>
+
+        <!-- Carousel Content -->
+        <div aria-live="off" class="carousel__content">
+          <img
+            src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg"
+            alt="Abuelo sonriendo"
+            srcset=""
+            class="carousel__content-img"
+          />
+        </div>
+        <!-- Carousel Slides -->
+        <div
+          role="tablist"
+          aria-label="Diapositivas"
+          class="carousel__tabs --tabs-mobile"
+        >
+          <button class="carousel__tabs-tab --active" id="tab-1"></button>
+          <button class="carousel__tabs-tab" id="tab-2"></button>
+          <button class="carousel__tabs-tab" id="tab-3"></button>
+          <button class="carousel__tabs-tab" id="tab-4"></button>
+        </div>
+
+        <div
+          role="tablist"
+          aria-label="Diapositivas"
+          class="carousel__tabs --tabs-tablet"
+        >
+          <button
+            style="
+              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg');
+            "
+            class="carousel__tabs-tab --active"
+            id="tab-1"
+          ></button>
+          <button
+            style="
+              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/elder-eating.jpg');
+            "
+            class="carousel__tabs-tab"
+            id="tab-2"
+          ></button>
+          <button
+            style="
+              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-eating.jpg');
+            "
+            class="carousel__tabs-tab"
+            id="tab-3"
+          ></button>
+          <button
+            style="
+              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-group-smile.jpg');
+            "
+            class="carousel__tabs-tab"
+            id="tab-4"
+          ></button>
+        </div>
+      </section>
     </div>
   </body>
 </html>

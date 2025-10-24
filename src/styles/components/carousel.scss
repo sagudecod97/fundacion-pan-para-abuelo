@@ -1,0 +1,151 @@
+@use "../base/variables" as vars;
+@use "../base/mixins.scss" as mix;
+
+.carousel {
+  position: relative;
+  height: 30rem;
+  width: 100%;
+  border-radius: vars.$radius-soft;
+  box-shadow: 0 0 4px var(--color-dark);
+
+  @include mix.tablet {
+    height: 38rem;
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  @include mix.laptop {
+    height: 47rem;
+  }
+
+  &__rotation {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    content: "";
+    z-index: 100;
+    width: 4.4rem;
+    height: 4.4rem;
+    background-color: var(--color-dark-light);
+    opacity: 0.8;
+    border-radius: vars.$radius-soft;
+
+    @include mix.laptop {
+      top: 1.5rem;
+      left: 1.5rem;
+      width: 6rem;
+      height: 6rem;
+    }
+
+    &-icon {
+      fill: var(--color-light);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    &-img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: vars.$radius-soft;
+    }
+  }
+
+  &__tabs {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 5rem;
+    width: 95%;
+    background-color: var(--color-dark-light);
+    opacity: 0.8;
+    padding: 0 1rem;
+    border-radius: vars.$radius-soft;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mix.tablet {
+      background-color: transparent;
+      height: 10rem;
+      justify-content: center;
+      gap: 5rem;
+    }
+
+    &-tab {
+      position: relative;
+      height: 4.4rem;
+      width: 4.4rem;
+      background-color: transparent;
+
+      @include mix.tablet {
+        background-color: vars.$dark;
+        height: 9rem;
+        width: 9rem;
+        border-radius: vars.$radius-soft;
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0 0 4px var(--color-dark);
+      }
+    }
+
+    &-tab::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      width: 80%;
+      height: 80%;
+      border: 0.3rem solid var(--color-dark);
+      background-color: var(--color-light);
+      border-radius: vars.$radius-round;
+
+      @include mix.tablet {
+        content: none;
+      }
+    }
+
+    &-tab.--active::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 500;
+      width: 55%;
+      height: 55%;
+      background-color: var(--color-dark);
+      border-radius: vars.$radius-round;
+
+      @include mix.tablet {
+        background-color: vars.$light;
+        width: 100%;
+        height: 100%;
+        border-radius: vars.$radius-soft;
+        opacity: 0.15;
+      }
+    }
+  }
+
+  &__tabs.--tabs-mobile {
+    @include mix.mobile-only(flex);
+  }
+
+  &__tabs.--tabs-tablet {
+    @include mix.hide-mobile(flex);
+  }
+
+  & button:focus {
+    outline: 0.2rem solid vars.$accent;
+  }
+}
