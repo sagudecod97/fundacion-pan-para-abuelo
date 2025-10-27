@@ -393,6 +393,7 @@
     <h2 class="title">Carousel</h2>
     <h3 class="title">Carousel default</h3>
 
+    <!-- Change aria values so they make sense -->
     <div class="section" style="padding: 8rem 3rem; display: flex; gap: 20px">
       <!-- Section has implied role of region -->
       <section
@@ -402,7 +403,10 @@
         id="carousel-example-id"
       >
         <!-- Rotation controls -->
-        <button class="carousel__rotation">
+        <button
+          aria-label="Detener rotación automatica"
+          class="carousel__rotation"
+        >
           <svg class="carousel__rotation-icon">
             <use href="/src/assets/icons/icons-sprite.svg#player-pause"></use>
           </svg>
@@ -410,13 +414,21 @@
 
         <!-- Carousel Content -->
         <div aria-live="off" class="carousel__content">
-          <img
-            src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg"
-            alt="Abuelo sonriendo"
-            srcset=""
-            class="carousel__content-img"
-          />
+          <div
+            role="tabpanel"
+            aria-roledescription="Diapositiva"
+            aria-label="1 de 4"
+            class="carousel__content-tabpanel"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg"
+              alt="Abuelo sonriendo"
+              srcset=""
+              class="carousel__content-img"
+            />
+          </div>
         </div>
+
         <!-- Carousel Slides -->
         <div
           role="tablist"
@@ -428,6 +440,7 @@
             aria-label="Diapositiva 1"
             aria-selected="true"
             tabindex="-1"
+            role="tab"
             class="carousel__tabs-tab --active"
           >
             <img
@@ -441,6 +454,7 @@
             aria-label="Diapositiva 2"
             aria-selected="false"
             tabindex="-1"
+            role="tab"
             class="carousel__tabs-tab"
           >
             <img
@@ -454,6 +468,7 @@
             aria-label="Diapositiva 3"
             aria-selected="false"
             tabindex="-1"
+            role="tab"
             class="carousel__tabs-tab"
           >
             <img
@@ -467,6 +482,7 @@
             aria-label="Diapositiva 4"
             aria-selected="false"
             tabindex="-1"
+            role="tab"
             class="carousel__tabs-tab"
           >
             <img
