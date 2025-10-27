@@ -4,4 +4,4 @@ import "../../styles/pages/demo.scss";
 
 import { Carousel } from "../lib/carousel-class";
 
-const carouselDemo = new Carousel("carousel-example-id");
+const _carouselDemo = new Carousel("carousel-example-id");

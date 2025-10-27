@@ -10,15 +10,18 @@ export class Carousel {
     this.toggleRotationIcon;
     this.tabsContainer;
     this.tabsElements;
-    this.toggleCarouselRotation = this.toggleCarouselRotation.bind(this);
+    this.toggleCarouselRotationHandler =
+      this.toggleCarouselRotationHandler.bind(this);
     this.clickOnTabHandler = this.clickOnTabHandler.bind(this);
+    this.keyboardControlsHandler = this.keyboardControlsHandler.bind(this);
 
     this.getCarouselElements();
 
     this.carouselRotationHandler();
-    this.handleElementsOnFocus();
-    this.setToggleCarouselRotationHandler();
+    this.setElementsOnFocusHandler();
+    this.settoggleCarouselRotationHandler();
     this.setClickOnTabHandler();
+    this.setKeyboardControlsHandler();
   }
 
   // Get carousel elements
@@ -72,12 +75,12 @@ export class Carousel {
     window[`_${this.carouselId}`] = rotationInterval;
   }
 
-  stopCarouselRotation() {
+  stopCarouselRotationHandler() {
     clearInterval(window[`_${this.carouselId}`]);
     delete window[`_${this.carouselId}`];
   }
 
-  toggleCarouselRotation() {
+  toggleCarouselRotationHandler() {
     if (!window[`_${this.carouselId}`]) {
       this.carouselRotationHandler();
       this.toggleRotationIcon.setAttribute(
@@ -85,7 +88,7 @@ export class Carousel {
         "/src/assets/icons/icons-sprite.svg#player-pause"
       );
     } else {
-      this.stopCarouselRotation(`_${this.carouselId}`);
+      this.stopCarouselRotationHandler(`_${this.carouselId}`);
       this.toggleRotationIcon.setAttribute(
         "href",
         "/src/assets/icons/icons-sprite.svg#player-play"
@@ -93,27 +96,11 @@ export class Carousel {
     }
   }
 
-  handleElementsOnFocus = () => {
-    const handleFocusEvent = () => {
-      if (window[`_${this.carouselId}`]) {
-        this.toggleRotationIcon.setAttribute(
-          "href",
-          "/src/assets/icons/icons-sprite.svg#player-play"
-        );
-        this.stopCarouselRotation(`_${this.carouselId}`);
-      }
-    };
-
-    this.toggleRotationBtn.onfocus = handleFocusEvent;
-    this.tabsContainer.onfocus = handleFocusEvent;
-    this.tabsElements.forEach(
-      (tabElement) => (tabElement.onfocus = handleFocusEvent)
-    );
-  };
-
   clickOnTabHandler(tabElement) {
     const currentActiveTab = query(".--active", this.tabsContainer);
     const imageElement = query("img", tabElement);
+
+    if (currentActiveTab === tabElement) return;
 
     // Add/Remove --active class
     tabElement.classList.add("--active");
@@ -125,15 +112,80 @@ export class Carousel {
     this.carouselImage.src = imageElement.src;
   }
 
-  // Set handlers
-  setToggleCarouselRotationHandler() {
-    this.toggleRotationBtn.onclick = this.toggleCarouselRotation;
+  keyboardControlsHandler(event) {
+    event.preventDefault();
+    const { key } = event;
+
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(key)) return;
+
+    const activeTab = query(".--active", this.tabsContainer);
+    const indexActiveTab = this.tabsElements.indexOf(activeTab);
+    const tabsElementsLenght = this.tabsElements.length - 1;
+    let newActiveTab;
+    let newActiveTabPosition;
+
+    if (key === "ArrowRight") {
+      newActiveTabPosition =
+        indexActiveTab === tabsElementsLenght ? 0 : indexActiveTab + 1;
+    } else if (key === "ArrowLeft") {
+      newActiveTabPosition =
+        indexActiveTab === 0 ? tabsElementsLenght : indexActiveTab - 1;
+    } else if (key === "Home") {
+      newActiveTabPosition = 0;
+    } else if (key === "End") {
+      newActiveTabPosition = tabsElementsLenght;
+    }
+
+    newActiveTab = this.tabsElements[newActiveTabPosition];
+
+    if (newActiveTab === activeTab) return;
+
+    const newActiveImageElement = query("img", newActiveTab);
+
+    // Add/Remove --active class
+    newActiveTab.classList.add("--active");
+    activeTab.classList.remove("--active");
+
+    // Add/Remove aria-selected
+    newActiveTab.setAttribute("aria-selected", "true");
+    activeTab.setAttribute("aria-selected", "false");
+    this.carouselImage.src = newActiveImageElement.src;
   }
+
+  // Set handlers
+  settoggleCarouselRotationHandler() {
+    this.toggleRotationBtn.onclick = this.toggleCarouselRotationHandler;
+  }
+
+  setElementsOnFocusHandler = () => {
+    const handleFocusEvent = () => {
+      if (window[`_${this.carouselId}`]) {
+        this.toggleRotationIcon.setAttribute(
+          "href",
+          "/src/assets/icons/icons-sprite.svg#player-play"
+        );
+        this.stopCarouselRotationHandler(`_${this.carouselId}`);
+      }
+    };
+
+    this.toggleRotationBtn.onfocus = handleFocusEvent;
+    this.tabsContainer.onfocus = handleFocusEvent;
+    this.tabsElements.forEach(
+      (tabElement) => (tabElement.onfocus = handleFocusEvent)
+    );
+  };
 
   setClickOnTabHandler() {
     this.tabsElements.forEach(
       (tabElement) =>
         (tabElement.onclick = () => this.clickOnTabHandler(tabElement))
+    );
+  }
+
+  setKeyboardControlsHandler() {
+    this.tabsContainer.addEventListener(
+      "keydown",
+      this.keyboardControlsHandler
     );
   }
 }
