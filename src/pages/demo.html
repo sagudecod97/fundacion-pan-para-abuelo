@@ -402,9 +402,9 @@
         id="carousel-example-id"
       >
         <!-- Rotation controls -->
-        <button class="carousel__rotation" id="carousel-example-start">
+        <button class="carousel__rotation">
           <svg class="carousel__rotation-icon">
-            <use href="/src/assets/icons/icons-sprite.svg#player-play"></use>
+            <use href="/src/assets/icons/icons-sprite.svg#player-pause"></use>
           </svg>
         </button>
 
@@ -418,8 +418,18 @@
           />
         </div>
         <!-- Carousel Slides -->
-        <div role="tablist" aria-label="Diapositivas" class="carousel__tabs">
-          <button class="carousel__tabs-tab --active" id="tab-1">
+        <div
+          role="tablist"
+          aria-label="Diapositivas"
+          tabindex="0"
+          class="carousel__tabs"
+        >
+          <button
+            aria-label="Diapositiva 1"
+            aria-selected="true"
+            tabindex="-1"
+            class="carousel__tabs-tab --active"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg"
               aria-hidden="true"
@@ -427,7 +437,12 @@
               class="carousel__tabs-image"
             />
           </button>
-          <button class="carousel__tabs-tab" id="tab-2">
+          <button
+            aria-label="Diapositiva 2"
+            aria-selected="false"
+            tabindex="-1"
+            class="carousel__tabs-tab"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/elder-eating.jpg"
               aria-hidden="true"
@@ -435,7 +450,12 @@
               class="carousel__tabs-image"
             />
           </button>
-          <button class="carousel__tabs-tab" id="tab-3">
+          <button
+            aria-label="Diapositiva 3"
+            aria-selected="false"
+            tabindex="-1"
+            class="carousel__tabs-tab"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-eating.jpg"
               aria-hidden="true"
@@ -443,7 +463,12 @@
               class="carousel__tabs-image"
             />
           </button>
-          <button class="carousel__tabs-tab" id="tab-4">
+          <button
+            aria-label="Diapositiva 4"
+            aria-selected="false"
+            tabindex="-1"
+            class="carousel__tabs-tab"
+          >
             <img
               src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-group-smile.jpg"
               aria-hidden="true"
@@ -452,41 +477,6 @@
             />
           </button>
         </div>
-
-        <!-- <div
-          role="tablist"
-          aria-label="Diapositivas"
-          class="carousel__tabs --tabs-tablet"
-        >
-          <button
-            style="
-              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg');
-            "
-            class="carousel__tabs-tab --active"
-            id="tab-1"
-          ></button>
-          <button
-            style="
-              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/elder-eating.jpg');
-            "
-            class="carousel__tabs-tab"
-            id="tab-2"
-          ></button>
-          <button
-            style="
-              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-eating.jpg');
-            "
-            class="carousel__tabs-tab"
-            id="tab-3"
-          ></button>
-          <button
-            style="
-              background-image: url('https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-group-smile.jpg');
-            "
-            class="carousel__tabs-tab"
-            id="tab-4"
-          ></button>
-        </div> -->
       </section>
     </div>
   </body>

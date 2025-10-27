@@ -75,7 +75,8 @@
 
     @include mix.tablet {
       background-color: transparent;
-      height: 8rem;
+      width: auto;
+      height: 9.5rem;
       justify-content: center;
       gap: 3rem;
       opacity: 1;
@@ -150,6 +151,10 @@
         object-position: center;
       }
     }
+  }
+
+  &__tabs:focus {
+    outline: 0.2rem solid vars.$accent;
   }
 
   & button:focus {
