@@ -49,12 +49,21 @@
     height: 100%;
     width: 100%;
 
+    &-tabpanel {
+      display: none;
+    }
+
     &-img {
       height: 100%;
       width: 100%;
       object-fit: cover;
       object-position: center;
       border-radius: vars.$radius-soft;
+    }
+
+    .--active {
+      height: 100%;
+      display: block;
     }
   }
 
@@ -64,21 +73,19 @@
     left: 50%;
     transform: translateX(-50%);
     height: 5rem;
-    width: 95%;
+    width: auto;
     background-color: var(--color-dark-light);
     opacity: 0.8;
     padding: 0 1rem;
     border-radius: vars.$radius-soft;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 3rem;
 
     @include mix.tablet {
       background-color: transparent;
-      width: auto;
       height: 9.5rem;
-      justify-content: center;
-      gap: 3rem;
       opacity: 1;
     }
 

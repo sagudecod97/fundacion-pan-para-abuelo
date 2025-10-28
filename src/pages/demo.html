@@ -418,12 +418,54 @@
             role="tabpanel"
             aria-roledescription="Diapositiva"
             aria-label="1 de 4"
-            class="carousel__content-tabpanel"
+            class="carousel__content-tabpanel --active"
+            id="carousel-demo-1"
           >
             <img
               src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/breakfast-grandparents.jpg"
-              alt="Abuelo sonriendo"
-              srcset=""
+              aria-hidden="true"
+              class="carousel__content-img"
+            />
+          </div>
+
+          <div
+            role="tabpanel"
+            aria-roledescription="Diapositiva"
+            aria-label="2 de 4"
+            class="carousel__content-tabpanel"
+            id="carousel-demo-2"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/elder-eating.jpg"
+              aria-hidden="true"
+              class="carousel__content-img"
+            />
+          </div>
+
+          <div
+            role="tabpanel"
+            aria-roledescription="Diapositiva"
+            aria-label="3 de 4"
+            class="carousel__content-tabpanel"
+            id="carousel-demo-3"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-eating.jpg"
+              aria-hidden="true"
+              class="carousel__content-img"
+            />
+          </div>
+
+          <div
+            role="tabpanel"
+            aria-roledescription="Diapositiva"
+            aria-label="4 de 4"
+            class="carousel__content-tabpanel"
+            id="carousel-demo-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/sagudecod97/pan-abuelo-imgs@imgs/pictures/grandparents-group-smile.jpg"
+              aria-hidden="true"
               class="carousel__content-img"
             />
           </div>
@@ -439,8 +481,10 @@
           <button
             aria-label="Diapositiva 1"
             aria-selected="true"
+            aria-controls="carousel-demo-1"
             tabindex="-1"
             role="tab"
+            data-position="0"
             class="carousel__tabs-tab --active"
           >
             <img
@@ -453,8 +497,10 @@
           <button
             aria-label="Diapositiva 2"
             aria-selected="false"
+            aria-controls="carousel-demo-2"
             tabindex="-1"
             role="tab"
+            data-position="1"
             class="carousel__tabs-tab"
           >
             <img
@@ -467,8 +513,10 @@
           <button
             aria-label="Diapositiva 3"
             aria-selected="false"
+            aria-controls="carousel-demo-3"
             tabindex="-1"
             role="tab"
+            data-position="2"
             class="carousel__tabs-tab"
           >
             <img
@@ -481,8 +529,10 @@
           <button
             aria-label="Diapositiva 4"
             aria-selected="false"
+            aria-controls="carousel-demo-4"
             tabindex="-1"
             role="tab"
+            data-position="3"
             class="carousel__tabs-tab"
           >
             <img

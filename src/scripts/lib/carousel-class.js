@@ -4,9 +4,10 @@ export class Carousel {
   constructor(carouseldId) {
     this.carouselId = carouseldId;
     this.initialRender = true;
+    this.userInteracted = false;
     this.mainContainer;
     this.carouselContent;
-    this.tabPanel;
+    this.tabPanelItems;
     this.carouselImage;
     this.toggleRotationBtn;
     this.toggleRotationIcon;
@@ -21,6 +22,7 @@ export class Carousel {
     this.stopCarouselRotationHandler =
       this.stopCarouselRotationHandler.bind(this);
     this.carouselRotationHandler = this.carouselRotationHandler.bind(this);
+    this.carouselMouseOutHandler = this.carouselMouseOutHandler.bind(this);
 
     // Select carousel elements
     this.getCarouselElements();
@@ -38,7 +40,9 @@ export class Carousel {
   getCarouselElements() {
     this.mainContainer = query(`#${this.carouselId}`);
     this.carouselContent = query(".carousel__content", this.mainContainer);
-    this.tabPanel = query(".carousel__content-tabpanel", this.mainContainer);
+    this.tabPanelItems = [
+      ...queryAll(".carousel__content-tabpanel", this.mainContainer),
+    ];
     this.toggleRotationBtn = query(".carousel__rotation", this.mainContainer);
     this.toggleRotationIcon = query("use", this.toggleRotationBtn);
     this.carouselImage = query(".carousel__content-img", this.mainContainer);
@@ -62,29 +66,27 @@ export class Carousel {
       // Queries for active tab and index of current active tag
       const activeTab = query(".--active", this.tabsContainer);
       const indexActiveTab = this.tabsElements.indexOf(activeTab);
+      const activeTabPanel = query(".--active", this.carouselContent);
+      let nextActiveTabPanel;
       let nextActiveTab;
-      let nextActiveTabChild;
 
       if (indexActiveTab === this.tabsElements.length - 1) {
+        nextActiveTabPanel = this.tabPanelItems[0];
         nextActiveTab = this.tabsElements[0];
       } else {
+        nextActiveTabPanel = this.tabPanelItems[indexActiveTab + 1];
         nextActiveTab = this.tabsElements[indexActiveTab + 1];
       }
-
-      nextActiveTabChild = query(".carousel__tabs-image", nextActiveTab);
 
       // Toggles aria-selected values.
       activeTab.setAttribute("aria-selected", "false");
       nextActiveTab.setAttribute("aria-selected", "true");
-      this.tabPanel.setAttribute(
-        "aria-label",
-        `${this.tabsElements.indexOf(nextActiveTab) + 1} de 4`
-      );
 
       // Removes and adds active class. Defines main container background image
       activeTab.classList.remove("--active");
       nextActiveTab.classList.add("--active");
-      this.carouselImage.src = nextActiveTabChild.src;
+      activeTabPanel.classList.remove("--active");
+      nextActiveTabPanel.classList.add("--active");
     }, 3500);
 
     // Variable added this way because the dom creates a variable on itself with all the ids on document
@@ -112,6 +114,7 @@ export class Carousel {
         "aria-label",
         "Detener rotación automatica"
       );
+      this.carouselContent.setAttribute("aria-live", "off");
       this.toggleRotationIcon.setAttribute(
         "href",
         "/src/assets/icons/icons-sprite.svg#player-pause"
@@ -123,22 +126,20 @@ export class Carousel {
 
   clickOnTabHandler(tabElement) {
     const currentActiveTab = query(".--active", this.tabsContainer);
-    const imageElement = query("img", tabElement);
+    const activeTabPanel = query(".--active", this.carouselContent);
+    const nextActiveTabPanel = this.tabPanelItems[tabElement.dataset.position];
 
     if (currentActiveTab === tabElement) return;
 
     // Add/Remove --active class
     tabElement.classList.add("--active");
     currentActiveTab.classList.remove("--active");
+    activeTabPanel.classList.remove("--active");
+    nextActiveTabPanel.classList.add("--active");
 
     // Add/Remove aria-selected
     tabElement.setAttribute("aria-selected", "true");
     currentActiveTab.setAttribute("aria-selected", "false");
-    this.carouselImage.src = imageElement.src;
-    this.tabPanel.setAttribute(
-      "aria-label",
-      `${this.tabsElements.indexOf(tabElement) + 1} de 4`
-    );
   }
 
   keyboardControlsHandler(event) {
@@ -158,6 +159,8 @@ export class Carousel {
       const activeTab = query(".--active", this.tabsContainer);
       const indexActiveTab = this.tabsElements.indexOf(activeTab);
       const tabsElementsLenght = this.tabsElements.length - 1;
+      const activeTabPanel = query(".--active", this.carouselContent);
+      let nextActiveTabPanel;
       let newActiveTab;
       let newActiveTabPosition;
 
@@ -176,24 +179,30 @@ export class Carousel {
       }
 
       newActiveTab = this.tabsElements[newActiveTabPosition];
+      nextActiveTabPanel = this.tabPanelItems[newActiveTabPosition];
 
       if (newActiveTab === activeTab) return;
-
-      const newActiveImageElement = query("img", newActiveTab);
 
       // Add/Remove --active class
       newActiveTab.classList.add("--active");
       activeTab.classList.remove("--active");
+      nextActiveTabPanel.classList.add("--active");
+      activeTabPanel.classList.remove("--active");
 
       // Add/Remove aria-selected
       newActiveTab.setAttribute("aria-selected", "true");
       activeTab.setAttribute("aria-selected", "false");
-      this.tabPanel.setAttribute(
-        "aria-label",
-        `${this.tabsElements.indexOf(newActiveTab) + 1} de 4`
-      );
-      this.carouselImage.src = newActiveImageElement.src;
+
+      newActiveTab.focus();
     }
+  }
+
+  carouselMouseOutHandler() {
+    this.carouselRotationHandler();
+    this.toggleRotationIcon.setAttribute(
+      "href",
+      "/src/assets/icons/icons-sprite.svg#player-pause"
+    );
   }
 
   // Set handlers
@@ -203,6 +212,16 @@ export class Carousel {
 
   setElementsOnFocusHandler = () => {
     const handleFocusEvent = () => {
+      this.userInteracted = true;
+      this.mainContainer.removeEventListener(
+        "mouseover",
+        this.stopCarouselRotationHandler
+      );
+      this.mainContainer.removeEventListener(
+        "mouseout",
+        this.carouselMouseOutHandler
+      );
+
       if (window[`_${this.carouselId}`]) {
         this.stopCarouselRotationHandler(`_${this.carouselId}`);
       }
@@ -234,12 +253,9 @@ export class Carousel {
       "mouseover",
       this.stopCarouselRotationHandler
     );
-    this.mainContainer.addEventListener("mouseout", () => {
-      this.carouselRotationHandler();
-      this.toggleRotationIcon.setAttribute(
-        "href",
-        "/src/assets/icons/icons-sprite.svg#player-pause"
-      );
-    });
+    this.mainContainer.addEventListener(
+      "mouseout",
+      this.carouselMouseOutHandler
+    );
   }
 }
