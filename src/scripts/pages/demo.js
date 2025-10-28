@@ -1,3 +1,7 @@
+"use strict";
 import "../../styles/main.scss";
+import "../../styles/pages/demo.scss";
 
-console.log("HMR Working on demo.html");
+import { Carousel } from "../lib/carousel-class";
+
+const _carouselDemo = new Carousel("carousel-example-id");

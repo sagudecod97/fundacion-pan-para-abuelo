@@ -1,3 +1,4 @@
+@use "./base/variables" as vars;
 @use "./base/fonts";
 @use "./base/resets";
 @use "./base/theme";
@@ -5,6 +6,7 @@
 // Components
 @use "./components/button.scss";
 @use "./components/card.scss";
+@use "./components/carousel.scss";
 
 .single-line {
   display: -webkit-box;
