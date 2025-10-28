@@ -29,7 +29,6 @@
 
   &-header {
     border-bottom: 1px solid var(--color-primary-border);
-    padding-bottom: vars.$padding-3;
   }
 
   &-body {
@@ -38,8 +37,9 @@
   }
 
   &-title {
-    margin: vars.$padding-4 vars.$padding-4 0 vars.$padding-4;
+    padding: vars.$padding-4;
     color: var(--color-dark-light);
+    font-size: 1.8rem
   }
 }
 
@@ -125,8 +125,8 @@
     &-title {
       grid-column: 2/3;
       grid-row: 1/2;
-      margin-left: vars.$margin-6;
-      margin-top: vars.$margin-6;
+      padding-left: vars.$padding-6;
+      padding-top: vars.$padding-5;
     }
 
     &-body {
